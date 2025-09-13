@@ -4,26 +4,28 @@
 */
 /* tslint:disable */
 
-export const SPEC_FROM_VIDEO_PROMPT = `You are a pedagogist and product designer with deep expertise in crafting engaging learning experiences via interactive web apps.
+export const SPEC_FROM_VIDEO_PROMPT = `Eres un pedagogo y diseñador de productos con profunda experiencia en crear experiencias de aprendizaje atractivas a través de aplicaciones web interactivas.
 
-Examine the contents of the attached video. Then, write a detailed and carefully considered spec for an interactive web app designed to complement the video and reinforce its key idea or ideas. The recipient of the spec does not have access to the video, so the spec must be thorough and self-contained (the spec must not mention that it is based on a video). Here is an example of a spec written in response to a video about functional harmony:
+Examina el contenido del video adjunto. Luego, escribe una especificación detallada y cuidadosamente considerada para una aplicación web interactiva diseñada para complementar el video y reforzar su idea o ideas clave. El destinatario de la especificación no tiene acceso al video, por lo que la especificación debe ser completa y autónoma (la especificación no debe mencionar que está basada en un video). Aquí tienes un ejemplo de una especificación escrita en respuesta a un video sobre armonía funcional:
 
-"In music, chords create expectations of movement toward certain other chords and resolution towards a tonal center. This is called functional harmony.
+"En música, los acordes crean expectativas de movimiento hacia ciertos otros acordes y resolución hacia un centro tonal. Esto se llama armonía funcional.
 
-Build me an interactive web app to help a learner understand the concept of functional harmony.
+Construye una aplicación web interactiva para ayudar a un estudiante a entender el concepto de armonía funcional.
 
-SPECIFICATIONS:
-1. The app must feature an interactive keyboard.
-2. The app must showcase all 7 diatonic triads that can be created in a major key (i.e., tonic, supertonic, mediant, subdominant, dominant, submediant, leading chord).
-3. The app must somehow describe the function of each of the diatonic triads, and state which other chords each triad tends to lead to.
-4. The app must provide a way for users to play different chords in sequence and see the results.
+ESPECIFICACIONES:
+1. La aplicación debe incluir un teclado interactivo.
+2. La aplicación debe mostrar las 7 tríadas diatónicas que se pueden crear en una tonalidad mayor (es decir, tónica, supertónica, mediante, subdominante, dominante, submediante, acorde sensible).
+3. La aplicación debe describir de alguna manera la función de cada una de las tríadas diatónicas, y establecer hacia qué otros acordes tiende a dirigirse cada tríada.
+4. La aplicación debe proporcionar una forma para que los usuarios toquen diferentes acordes en secuencia y vean los resultados.
 [etc.]"
 
-The goal of the app that is to be built based on the spec is to enhance understanding through simple and playful design. The provided spec should not be overly complex, i.e., a junior web developer should be able to implement it in a single html file (with all styles and scripts inline). Most importantly, the spec must clearly outline the core mechanics of the app, and those mechanics must be highly effective in reinforcing the given video's key idea(s).
+El objetivo de la aplicación que se construirá basada en la especificación es mejorar la comprensión a través de un diseño simple y lúdico. La especificación proporcionada debe ser lo suficientemente robusta para crear aplicaciones complejas y educativas, pero implementable por un desarrollador web en un solo archivo HTML (con todos los estilos y scripts en línea). Es crucial que la especificación describa claramente las mecánicas centrales de la aplicación, y esas mecánicas deben ser altamente efectivas para reforzar las ideas clave del video.
 
-Provide the result as a JSON object containing a single field called "spec", whose value is the spec for the web app.`;
+Crea aplicaciones más sofisticadas con múltiples características interactivas, animaciones, elementos de gamificación, sistemas de progreso, y funcionalidades avanzadas que proporcionen una experiencia de aprendizaje rica y completa. La aplicación debe incluir al menos 8-12 características principales bien desarrolladas.
+
+Proporciona el resultado como un objeto JSON que contenga un solo campo llamado "spec", cuyo valor sea la especificación para la aplicación web.`;
 
 export const CODE_REGION_OPENER = '```';
 export const CODE_REGION_CLOSER = '```';
 
-export const SPEC_ADDENDUM = `\n\nThe app must be fully responsive and function properly on both desktop and mobile. Provide the code as a single, self-contained HTML document. All styles and scripts must be inline. In the result, encase the code between "${CODE_REGION_OPENER}" and "${CODE_REGION_CLOSER}" for easy parsing.`;
+export const SPEC_ADDENDUM = `\n\nLa aplicación debe ser completamente responsiva y funcionar correctamente tanto en escritorio como en móvil. Proporciona el código como un documento HTML único y autónomo. Todos los estilos y scripts deben estar en línea. En el resultado, encierra el código entre "${CODE_REGION_OPENER}" y "${CODE_REGION_CLOSER}" para facilitar el análisis. Asegúrate de crear una aplicación robusta, compleja y rica en funcionalidades que maximice el aprendizaje del usuario con múltiples elementos interactivos, animaciones suaves, y una experiencia de usuario excepcional.`;

@@ -67,6 +67,7 @@ export default forwardRef(function ContentContainer(
       modelName: 'gemini-2.5-flash',
       prompt: SPEC_FROM_VIDEO_PROMPT,
       videoUrl: videoUrl,
+      temperature: 0.8, // Aumentar creatividad para especificaciones más ricas
     });
 
     let spec = parseJSON(specResponse).spec;
@@ -79,8 +80,9 @@ export default forwardRef(function ContentContainer(
   // Helper function to generate code from content spec
   const generateCodeFromSpec = async (spec: string): Promise<string> => {
     const codeResponse = await generateText({
-      modelName: 'gemini-2.5-pro-preview-03-25',
+      modelName: 'gemini-2.5-pro',
       prompt: spec,
+      temperature: 0.7, // Balance entre creatividad y precisión para código
     });
 
     const code = parseHTML(
@@ -133,8 +135,8 @@ export default forwardRef(function ContentContainer(
           err,
         );
         setError(
-          err instanceof Error ? err.message : 'An unknown error occurred',
-        );
+        err instanceof Error ? err.message : 'Ocurrió un error desconocido',
+      );
         setLoadingState('error');
       }
     }
@@ -161,7 +163,7 @@ export default forwardRef(function ContentContainer(
 
   const handleCodeChange = (value: string | undefined) => {
     setCode(value || '');
-    setSaveMessage('HTML updated. Changes will appear in the Render tab.');
+    setSaveMessage('HTML actualizado. Los cambios aparecerán en la pestaña Vista Previa.');
   };
 
   const handleSpecEdit = () => {
@@ -196,7 +198,7 @@ export default forwardRef(function ContentContainer(
         err,
       );
       setError(
-        err instanceof Error ? err.message : 'An unknown error occurred',
+        err instanceof Error ? err.message : 'Ocurrió un error desconocido',
       );
       setLoadingState('error');
     }
@@ -226,8 +228,8 @@ export default forwardRef(function ContentContainer(
           marginTop: '20px',
         }}>
         {loadingState === 'loading-spec'
-          ? 'Generating content spec from video...'
-          : 'Generating code from content spec...'}
+          ? 'Generando especificación de contenido desde video...'
+          : 'Generando código desde especificación de contenido...'}
       </p>
     </div>
   );
@@ -252,11 +254,11 @@ export default forwardRef(function ContentContainer(
         error
       </div>
       <h3 style={{fontSize: '1.5rem', marginBottom: '0.5rem'}}>Error</h3>
-      <p>{error || 'Something went wrong'}</p>
+      <p>{error || 'Algo salió mal'}</p>
       {!contentBasis.startsWith('http://') &&
       !contentBasis.startsWith('https://') ? (
         <p style={{marginTop: '0.5rem'}}>
-          (<strong>NOTE:</strong> URL must begin with http:// or https://)
+          (<strong>NOTA:</strong> La URL debe comenzar con http:// o https://)
         </p>
       ) : null}
     </div>
@@ -329,10 +331,10 @@ export default forwardRef(function ContentContainer(
           />
           <div style={{display: 'flex', gap: '6px', ...buttonContainerStyle}}>
             <button onClick={handleSpecSave} className="button-primary">
-              Save & regenerate code
-            </button>
-            <button onClick={handleSpecCancel} className="button-secondary">
-              Cancel
+                  Guardar y regenerar código
+                </button>
+                <button onClick={handleSpecCancel} className="button-secondary">
+                  Cancelar
             </button>
           </div>
         </div>
@@ -361,7 +363,7 @@ export default forwardRef(function ContentContainer(
             style={{display: 'flex', alignItems: 'center', gap: '5px'}}
             onClick={handleSpecEdit}
             className="button-primary">
-            Edit{' '}
+            Editar{' '}
             <span
               style={{
                 fontFamily: 'var(--font-symbols)',
@@ -411,13 +413,13 @@ export default forwardRef(function ContentContainer(
         }}>
         <TabList style={tabListStyle}>
           <Tab style={tabStyle} selectedClassName="selected-tab">
-            Render
+            Vista Previa
           </Tab>
           <Tab style={tabStyle} selectedClassName="selected-tab">
-            Code
+            Código
           </Tab>
           <Tab style={tabStyle} selectedClassName="selected-tab">
-            Spec
+            Especificación
           </Tab>
         </TabList>
 

@@ -38,7 +38,7 @@ export async function generateText(
   const {modelName, prompt, videoUrl, temperature = 0.75} = options;
 
   if (!GEMINI_API_KEY) {
-    throw new Error('Gemini API key is missing or empty');
+    throw new Error('La clave API de Gemini falta o está vacía');
   }
 
   const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
@@ -55,7 +55,7 @@ export async function generateText(
       });
     } catch (error) {
       console.error('Error processing video input:', error);
-      throw new Error(`Failed to process video input from URL: ${videoUrl}`);
+      throw new Error(`Error al procesar entrada de video desde URL: ${videoUrl}`);
     }
   }
 
@@ -75,13 +75,13 @@ export async function generateText(
     // Check for prompt blockage
     if (response.promptFeedback?.blockReason) {
       throw new Error(
-        `Content generation failed: Prompt blocked (reason: ${response.promptFeedback.blockReason})`,
+        `Falló la generación de contenido: Prompt bloqueado (razón: ${response.promptFeedback.blockReason})`,
       );
     }
 
     // Check for response blockage
     if (!response.candidates || response.candidates.length === 0) {
-      throw new Error('Content generation failed: No candidates returned.');
+      throw new Error('Falló la generación de contenido: No se devolvieron candidatos.');
     }
 
     const firstCandidate = response.candidates[0];
@@ -93,11 +93,11 @@ export async function generateText(
     ) {
       if (firstCandidate.finishReason === FinishReason.SAFETY) {
         throw new Error(
-          'Content generation failed: Response blocked due to safety settings.',
+          'Falló la generación de contenido: Respuesta bloqueada por configuraciones de seguridad.',
         );
       } else {
         throw new Error(
-          `Content generation failed: Stopped due to ${firstCandidate.finishReason}.`,
+          `Falló la generación de contenido: Detenido debido a ${firstCandidate.finishReason}.`,
         );
       }
     }

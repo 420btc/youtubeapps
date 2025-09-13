@@ -15,7 +15,7 @@ interface ExampleGalleryProps {
 }
 
 export default function ExampleGallery({
-  title = 'Examples',
+  title = 'Ejemplos',
   selectedExample,
   onSelectExample,
 }: ExampleGalleryProps) {

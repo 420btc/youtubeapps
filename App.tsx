@@ -13,7 +13,7 @@ import {
   getYouTubeVideoTitle,
   validateYoutubeUrl,
 } from '@/lib/youtube';
-import {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 
 // Whether to validate the input URL before attempting to generate content
 const VALIDATE_INPUT_URL = true;
@@ -96,7 +96,7 @@ export default function App() {
       if (validationResult.isValid) {
         proceedWithVideo(inputValue);
       } else {
-        alert(validationResult.error || 'Invalid YouTube URL');
+        alert(validationResult.error || 'URL de YouTube inválida');
         setUrlValidating(false);
       }
     } else {
@@ -121,7 +121,7 @@ export default function App() {
 
   const exampleGallery = (
     <ExampleGallery
-      title={PRESEED_CONTENT ? 'More examples' : 'Examples'}
+      title={PRESEED_CONTENT ? 'Más ejemplos' : 'Ejemplos'}
       onSelectExample={handleExampleSelect}
       selectedExample={selectedExample}
     />
@@ -131,16 +131,16 @@ export default function App() {
     <>
       <main className="main-container">
         <div className="left-side">
-          <h1 className="headline">Video to Learning App</h1>
+          <h1 className="headline">Aplicación de Video a Aprendizaje</h1>
           <p className="subtitle">
-            Generate interactive learning apps from YouTube content
+            Genera aplicaciones de aprendizaje interactivas desde contenido de YouTube
           </p>
           <p className="attribution">
-            An experiment by <strong>Aaron Wade</strong>
+            <strong></strong>
           </p>
           <div className="input-container">
             <label htmlFor="youtube-url" className="input-label">
-              Paste a URL from YouTube:
+              Pega una URL de YouTube:
             </label>
             <input
               ref={inputRef}
@@ -166,10 +166,10 @@ export default function App() {
               disabled={urlValidating || contentLoading} // Disable button during validation or content loading
             >
               {urlValidating
-                ? 'Validating URL...'
+                ? 'Validando URL...'
                 : contentLoading
-                  ? 'Generating...'
-                  : 'Generate app'}
+                  ? 'Generando...'
+                  : 'Generar aplicación'}
             </button>
           </div>
 
@@ -181,7 +181,7 @@ export default function App() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen></iframe>
             ) : (
-              <div className="video-placeholder">Video will appear here</div>
+              <div className="video-placeholder">El video aparecerá aquí</div>
             )}
           </div>
 
@@ -205,8 +205,8 @@ export default function App() {
               <div className="content-placeholder">
                 <p>
                   {urlValidating
-                    ? 'Validating URL...'
-                    : 'Paste a YouTube URL or select an example to begin'}
+                    ? 'Validando URL...'
+                    : 'Pega una URL de YouTube o selecciona un ejemplo para comenzar'}
                 </p>
               </div>
             )}
